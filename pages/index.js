@@ -1,65 +1,103 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import { Box, Text, Image, Button, Grid, Flex } from "@chakra-ui/core";
+import { MenuItem } from "../components/Menu/MenuItem";
+import { ActionButton } from "../components/CustomButtons/ActionButton";
+
+const menuItems = [
+  {
+    label: "Współpraca",
+  },
+  {
+    label: "Jak to działa",
+  },
+  {
+    label: "Regulamin",
+  },
+];
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <Grid px={5} py={5} h="100vh" templateRows="150px 1fr 60px">
       <Head>
-        <title>Create Next App</title>
+        <title>GastroSaver</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      {/* Header */}
+      <Box
+        as="header"
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        alignContent="center"
+        pr={20}
+        pl={10}
+      >
+        <Image src="/logo.png"></Image>
+        {/* Menu */}
+        <Box
+          as="ul"
+          display="inline-flex"
+          flexDirection="row"
+          alignItems="center"
+          listStyleType="none"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+          {menuItems.map((menuItem, i) => (
+            <MenuItem key={i}>{menuItem.label}</MenuItem>
+          ))}
+        </Box>
+      </Box>
+      {/* Content */}
+      <Grid
+        as="main"
+        pl={20}
+        pr={10}
+        gap="10"
+        templateColumns="1fr 3fr"
+        templateRows="auto 1fr"
+      >
+        <Box gridColumn="1/1" gridRow="1/1">
+          <Text fontSize="4xl" fontWeight="medium" color="gray.600" mt={5}>
+            Pomóż
+          </Text>
+          <Text
+            fontSize="7xl"
+            fontWeight="bold"
+            color="gray.600"
+            lineHeight="5rem"
+          >
+            Gastronomi w Polsce
+          </Text>
+        </Box>
+        {/* //Actions */}
+        <Flex
+          gridRow="2/-1"
+          gridColumn="1/1"
+          direction="column"
+          alignItems="flex-start"
+          justifyContent="center"
+        >
+          <ActionButton title="Spradź" subtitle="jak działamy"></ActionButton>
+          <ActionButton title="Wejdź" subtitle="we współprace"></ActionButton>
+        </Flex>
+        <Box
+          gridColumn="2/-1"
+          gridRow="1/-1"
+          position="relative"
+          display="flex"
+          justifyContent="center"
+        >
+          <Image
+            gridRow="1/-1"
+            gridColumn="2"
+            position="absolute"
+            height="100%"
+            src="/img/peopele-in-restaurant.png"
+            top="-2rem"
+            alt="People in the restaurant which is in danger"
+          />
+        </Box>
+      </Grid>
+      <Box as="footer" height="80px"></Box>
+    </Grid>
+  );
 }
