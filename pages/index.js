@@ -2,10 +2,11 @@ import Head from "next/head";
 import { Box, Text, Image, Button, Grid, Flex } from "@chakra-ui/core";
 import { MenuItem } from "../components/Menu/MenuItem";
 import { ActionButton } from "../components/CustomButtons/ActionButton";
+import { BiNoEntry } from "react-icons/bi";
 
 const menuItems = [
   {
-    label: "Współpraca",
+    label: "Dołącz się",
   },
   {
     label: "Jak to działa",
@@ -65,7 +66,12 @@ export default function Home() {
           lg: "'title banner' 'actions banner'",
         }}
       >
-        <Flex gridArea="title" direction="column" justifyContent="center">
+        <Flex
+          gridArea="title"
+          direction="column"
+          justifyContent="center"
+          mt={{ base: "none", md: 10 }}
+        >
           <Text
             fontSize={{ base: "3xl", md: "3xl" }}
             fontWeight="medium"
@@ -77,7 +83,7 @@ export default function Home() {
             fontSize={{ base: "5xl", md: "6xl" }}
             fontWeight="bold"
             color="gray.600"
-            lineHeight={{ base: "none", md: "none", lg: "tall" }}
+            lineHeight={{ base: "none", md: "none", lg: "normal" }}
           >
             Gastronomii w Polsce
           </Text>
