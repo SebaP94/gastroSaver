@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Text } from "@chakra-ui/core";
+import { Text, Divider, Button } from "@chakra-ui/core";
+import { extendTheme } from "@chakra-ui/core";
 
 export const MenuItem = (props) => {
   const [hover, setHover] = useState(false);
@@ -17,6 +18,11 @@ export const MenuItem = (props) => {
       _hover={{ color: "red.custom", cursor: "pointer" }}
     >
       {props.children}
+      <Divider
+        borderBottomWidth={3}
+        opacity="1"
+        borderBottomColor={hover ? "red.custom" : "transparent"}
+      />
     </Text>
   );
 };
