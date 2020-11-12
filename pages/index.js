@@ -17,7 +17,7 @@ const menuItems = [
 
 export default function Home() {
   return (
-    <Grid px={5} py={5} h="100vh" templateRows="150px 1fr 60px">
+    <Grid p={{ base: 6, lg: 10 }} h="100vh" templateRows="150px 1fr 60px">
       <Head>
         <title>GastroSaver</title>
         <link rel="icon" href="/favicon.ico" />
@@ -26,17 +26,15 @@ export default function Home() {
       <Box
         as="header"
         display="flex"
-        flexDirection="row"
+        flexDirection={{ base: "column", md: "row" }}
         justifyContent="space-between"
         alignContent="center"
-        pr={20}
-        pl={10}
       >
-        <Image src="/logo.png" alt="Gastro saver"></Image>
+        <Image src="/logo.png" alt="Gastro saver" objectFit="contain"></Image>
         {/* Menu */}
         <Box
           as="ul"
-          display="inline-flex"
+          display={{ base: "none", md: "inline-flex" }}
           flexDirection="row"
           alignItems="center"
           listStyleType="none"
@@ -49,34 +47,36 @@ export default function Home() {
       {/* Content */}
       <Grid
         as="main"
-        pl={20}
-        pr={10}
         gap="10"
-        templateColumns="1fr 3fr"
-        templateRows="1fr 1fr"
+        templateColumns={{ base: "1fr", md: "1fr 3fr" }}
+        templateRows={{ base: "auto 1fr auto", md: "auto 1fr" }}
+        templateAreas={{
+          base: "'title' 'banner' 'actions'",
+          md: "'title title' 'actions banner'",
+          lg: "'title banner' 'actions banner'",
+        }}
       >
-        <Flex
-          gridColumn="1/1"
-          gridRow="1/1"
-          direction="column"
-          justifyContent="center"
-        >
-          <Text fontSize="4xl" fontWeight="medium" color="gray.600" mt={5}>
+        <Flex gridArea="title" direction="column" justifyContent="center">
+          <Text
+            fontSize={{ base: "3xl", md: "3xl" }}
+            fontWeight="medium"
+            color="gray.600"
+            mt={2}
+          >
             Pomóż
           </Text>
           <Text
-            fontSize="7xl"
+            fontSize={{ base: "5xl", md: "6xl" }}
             fontWeight="bold"
             color="gray.600"
-            lineHeight="5rem"
+            lineHeight={{ base: "none", md: "none", lg: "tall" }}
           >
             Gastronomi w Polsce
           </Text>
         </Flex>
         {/* //Actions */}
         <Flex
-          gridRow="2/-1"
-          gridColumn="1/1"
+          gridArea="actions"
           direction="column"
           alignItems="flex-start"
           justifyContent="center"
@@ -84,25 +84,17 @@ export default function Home() {
           <ActionButton title="Spradź" subtitle="jak działamy"></ActionButton>
           <ActionButton title="Wejdź" subtitle="we współprace"></ActionButton>
         </Flex>
-        <Box
-          gridColumn="2/-1"
-          gridRow="1/-1"
-          position="relative"
-          display="flex"
-          justifyContent="center"
-        >
+        <Box gridArea="banner" display="flex" justifyContent="center">
           <Image
-            gridRow="1/-1"
-            gridColumn="2"
-            position="absolute"
+            maxHeight={{ base: "50vh", md: "70vh" }}
             height="100%"
             src="/img/peopele-in-restaurant.png"
-            top="-2rem"
+            // top="-2rem"
+            objectFit="contain"
             alt="People in the restaurant which is in danger"
           />
         </Box>
       </Grid>
-      <Box as="footer" height="80px"></Box>
     </Grid>
   );
 }
