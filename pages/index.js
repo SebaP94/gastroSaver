@@ -52,8 +52,16 @@ export default function Home() {
           alignItems="flex-start"
           justifyContent="center"
         >
-          <ActionButton title="Sprawdź" subtitle="jak działamy"></ActionButton>
-          <ActionButton title="Dołącz" subtitle="do akcji"></ActionButton>
+          <ActionButton
+            title="Sprawdź"
+            subtitle="jak działamy"
+            link="/how-it-works"
+          ></ActionButton>
+          <ActionButton
+            title="Dołącz"
+            subtitle="do akcji"
+            link="/join"
+          ></ActionButton>
         </Flex>
         <Box gridArea="banner" display="flex" justifyContent="center">
           <Image
