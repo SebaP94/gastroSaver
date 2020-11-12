@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { Text } from "@chakra-ui/core";
-import styled from "@emotion/styled";
 
-const Divider = styled.div`
-  height: 2px;
-  width: 110%;
-  position: absolute;
-  left: -5%;
-  background-color: ${(props) => (props.hover ? "red" : "transparent")};
-`;
 export const MenuItem = (props) => {
   const [hover, setHover] = useState(false);
 
@@ -25,7 +17,6 @@ export const MenuItem = (props) => {
       _hover={{ color: "red.custom", cursor: "pointer" }}
     >
       {props.children}
-      <Divider hover={hover} />
     </Text>
   );
 };
