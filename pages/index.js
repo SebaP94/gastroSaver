@@ -17,7 +17,11 @@ const menuItems = [
 
 export default function Home() {
   return (
-    <Grid p={{ base: 6, lg: 10 }} h="100vh" templateRows="150px 1fr 60px">
+    <Grid
+      p={{ base: 6, lg: 10 }}
+      h="100vh"
+      templateRows={{ base: "100px 1fr", md: "150px 1fr" }}
+    >
       <Head>
         <title>GastroSaver</title>
         <link rel="icon" href="/favicon.ico" />
@@ -30,7 +34,12 @@ export default function Home() {
         justifyContent="space-between"
         alignContent="center"
       >
-        <Image src="/logo.png" alt="Gastro saver" objectFit="contain"></Image>
+        <Image
+          src="/logo.png"
+          alt="Gastro saver"
+          objectFit="contain"
+          maxHeight={{ base: "100px", md: "150px" }}
+        ></Image>
         {/* Menu */}
         <Box
           as="ul"
@@ -47,7 +56,7 @@ export default function Home() {
       {/* Content */}
       <Grid
         as="main"
-        gap="10"
+        gap={{ base: 0, md: 10 }}
         templateColumns={{ base: "1fr", md: "1fr 3fr" }}
         templateRows={{ base: "auto 1fr auto", md: "auto 1fr" }}
         templateAreas={{
@@ -61,7 +70,6 @@ export default function Home() {
             fontSize={{ base: "3xl", md: "3xl" }}
             fontWeight="medium"
             color="gray.600"
-            mt={2}
           >
             Pomóż
           </Text>
@@ -71,7 +79,7 @@ export default function Home() {
             color="gray.600"
             lineHeight={{ base: "none", md: "none", lg: "tall" }}
           >
-            Gastronomi w Polsce
+            Gastronomii w Polsce
           </Text>
         </Flex>
         {/* //Actions */}
@@ -81,7 +89,7 @@ export default function Home() {
           alignItems="flex-start"
           justifyContent="center"
         >
-          <ActionButton title="Spradź" subtitle="jak działamy"></ActionButton>
+          <ActionButton title="Sprawdź" subtitle="jak działamy"></ActionButton>
           <ActionButton title="Wejdź" subtitle="we współprace"></ActionButton>
         </Flex>
         <Box gridArea="banner" display="flex" justifyContent="center">
