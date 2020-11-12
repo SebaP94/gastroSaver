@@ -1,45 +1,51 @@
 import React, { useState } from "react";
-import { Button, Text, Icon, Box } from "@chakra-ui/core";
 import { BiLeftArrowCircle } from "react-icons/bi";
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
+
+const StyledButton = styled.button`
+  margin: 8px;
+  background: transparent;
+  padding: 8px 24px;
+  border: darkgrey;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const Icon = styled.div`
+  grid-column: 1/1;
+  grid-row: 1/-1;
+  height: 24px;
+  width: 24px;
+`;
+
+const iconStyles = css({ fill: "brown", height: "24px" });
 
 export const ActionButton = (props) => {
   const [hover, setHover] = useState(false);
 
   return (
-    <Button
+    <StyledButton
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      my={2}
-      variant="ghost"
-      colorScheme="black"
-      textAlign="left"
-      w="auto"
-      color={hover ? "red.custom" : "gray.700"}
-      _focus={{
-        boxShadow: "none",
-        outline: "none",
-        color: "red.custom",
-      }}
     >
-      <Icon
-        gridColumn="1/1"
-        gridRow="1/-1"
-        as={BiLeftArrowCircle}
-        boxSize={12}
-        px={2}
-      />
-      <Box>
+      <Icon>
+        <BiLeftArrowCircle css={iconStyles} />
+      </Icon>
+      <div>
         {props.title && (
-          <Text fontWeight="bold" gridColumn="2/2" as="p">
+          <span fontWeight="bold" gridColumn="2/2" as="p">
             {props.title}
-          </Text>
+          </span>
         )}
         {props.subtitle && (
-          <Text fontWeight="medium" gridColumn="2/2" as="p">
+          <span fontWeight="medium" gridColumn="2/2" as="p">
             {props.subtitle}
-          </Text>
+          </span>
         )}
-      </Box>
-    </Button>
+      </div>
+    </StyledButton>
   );
 };

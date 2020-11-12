@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Box, Text, Image, Button, Grid, Flex } from "@chakra-ui/core";
 import { MenuItem } from "../components/Menu/MenuItem";
 import { ActionButton } from "../components/CustomButtons/ActionButton";
+import styled from "@emotion/styled";
 
 const menuItems = [
   {
@@ -15,89 +16,98 @@ const menuItems = [
   },
 ];
 
+const MainWrapper = styled.div`
+  display: grid;
+  grid-template-rows: 150px 1fr 60px;
+  padding: 20px;
+`;
+
+const Header = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0 40px 0 20px;
+`;
+
+const Menu = styled.ul`
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+`;
+
+const Content = styled.main`
+  padding: 0 20px 0 40px;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto 1fr;
+`;
+
+const Heading = styled.div`
+  grid-column: 1/1;
+  grid-row: 1/1;
+`;
+
+const Actions = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-row: 2/-1;
+  grid-column: 1/1;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+const BannerWrapper = styled.div`
+  grid-row: 1/-1;
+  grid-column: 2/-1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+`;
+
+const Banner = styled.img`
+  position: absolute;
+  height: 100%;
+  width: auto;
+`;
+
 export default function Home() {
   return (
-    <Grid px={5} py={5} h="100vh" templateRows="150px 1fr 60px">
+    <MainWrapper>
       <Head>
         <title>GastroSaver</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header */}
-      <Box
-        as="header"
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        alignContent="center"
-        pr={20}
-        pl={10}
-      >
-        <Image src="/logo.png"></Image>
+      <Header>
+        <img src="/logo.png"></img>
         {/* Menu */}
-        <Box
-          as="ul"
-          display="inline-flex"
-          flexDirection="row"
-          alignItems="center"
-          listStyleType="none"
-        >
+        <Menu>
           {menuItems.map((menuItem, i) => (
             <MenuItem key={i}>{menuItem.label}</MenuItem>
           ))}
-        </Box>
-      </Box>
+        </Menu>
+      </Header>
       {/* Content */}
-      <Grid
-        as="main"
-        pl={20}
-        pr={10}
-        gap="10"
-        templateColumns="1fr 3fr"
-        templateRows="auto 1fr"
-      >
-        <Box gridColumn="1/1" gridRow="1/1">
-          <Text fontSize="4xl" fontWeight="medium" color="gray.600" mt={5}>
-            Pomóż
-          </Text>
-          <Text
-            fontSize="7xl"
-            fontWeight="bold"
-            color="gray.600"
-            lineHeight="5rem"
-          >
-            Gastronomi w Polsce
-          </Text>
-        </Box>
+      <Content>
+        <Heading>
+          <h2>Pomóż</h2>
+          <h1>Gastronomi w Polsce</h1>
+        </Heading>
         {/* //Actions */}
-        <Flex
-          gridRow="2/-1"
-          gridColumn="1/1"
-          direction="column"
-          alignItems="flex-start"
-          justifyContent="center"
-        >
+        <Actions>
           <ActionButton title="Spradź" subtitle="jak działamy"></ActionButton>
           <ActionButton title="Wejdź" subtitle="we współprace"></ActionButton>
-        </Flex>
-        <Box
-          gridColumn="2/-1"
-          gridRow="1/-1"
-          position="relative"
-          display="flex"
-          justifyContent="center"
-        >
-          <Image
-            gridRow="1/-1"
-            gridColumn="2"
-            position="absolute"
-            height="100%"
+        </Actions>
+        <BannerWrapper>
+          <Banner
             src="/img/peopele-in-restaurant.png"
-            top="-2rem"
             alt="People in the restaurant which is in danger"
           />
-        </Box>
-      </Grid>
+        </BannerWrapper>
+      </Content>
       <Box as="footer" height="80px"></Box>
-    </Grid>
+    </MainWrapper>
   );
 }
