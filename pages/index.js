@@ -32,7 +32,7 @@ export default function Home() {
         pr={20}
         pl={10}
       >
-        <Image src="/logo.png"></Image>
+        <Image src="/logo.png" alt="Gastro saver"></Image>
         {/* Menu */}
         <Box
           as="ul"
@@ -53,9 +53,14 @@ export default function Home() {
         pr={10}
         gap="10"
         templateColumns="1fr 3fr"
-        templateRows="auto 1fr"
+        templateRows="1fr 1fr"
       >
-        <Box gridColumn="1/1" gridRow="1/1">
+        <Flex
+          gridColumn="1/1"
+          gridRow="1/1"
+          direction="column"
+          justifyContent="center"
+        >
           <Text fontSize="4xl" fontWeight="medium" color="gray.600" mt={5}>
             Pomóż
           </Text>
@@ -67,7 +72,7 @@ export default function Home() {
           >
             Gastronomi w Polsce
           </Text>
-        </Box>
+        </Flex>
         {/* //Actions */}
         <Flex
           gridRow="2/-1"
