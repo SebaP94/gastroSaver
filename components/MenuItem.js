@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Text, Divider, Button } from "@chakra-ui/core";
-import { extendTheme } from "@chakra-ui/core";
 
 export const MenuItem = (props) => {
   const [hover, setHover] = useState(false);
-
   return (
     <Text
       onMouseEnter={() => setHover(true)}
@@ -15,13 +13,19 @@ export const MenuItem = (props) => {
       color="gray.600"
       as="li"
       mx={3}
-      _hover={{ color: "red.custom", cursor: "pointer" }}
+      transition="all .2s ease-in"
     >
       {props.children}
       <Divider
         borderBottomWidth={3}
         opacity="1"
-        borderBottomColor={hover ? "red.custom" : "transparent"}
+        width="110%"
+        position="absolute"
+        right="-5%"
+        transition="all .2s ease-in"
+        borderBottomColor={
+          hover || props.isActive ? "red.custom" : "transparent"
+        }
       />
     </Text>
   );
