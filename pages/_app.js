@@ -7,6 +7,8 @@ function MyApp({ Component, pageProps }) {
       <Grid
         p={{ base: 6, lg: 10 }}
         h="100vh"
+        maxWidth="1440px"
+        m="auto"
         templateRows={{ base: "100px 1fr", md: "150px 1fr" }}
       >
         <Component {...pageProps} />

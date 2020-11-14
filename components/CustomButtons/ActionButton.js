@@ -3,20 +3,27 @@ import { Button, Text, Icon, Box } from "@chakra-ui/core";
 import { BiLeftArrowCircle } from "react-icons/bi";
 import Link from "next/link";
 
-export const ActionButton = (props) => {
+export const ActionButton = ({
+  link,
+  title,
+  subtitle,
+  color = "gray.700",
+  hoverColor = "red.custom",
+}) => {
   const [hover, setHover] = useState(false);
 
   return (
-    <Link href={props.link}>
+    <Link href={link}>
       <Button
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         my={2}
+        px={{ base: 0, md: 1 }}
         variant="ghost"
         colorScheme="black"
         textAlign="left"
         w="auto"
-        color={hover ? "red.custom" : "gray.700"}
+        color={hover ? hoverColor : color}
         _focus={{
           boxShadow: "none",
           outline: "none",
@@ -31,14 +38,14 @@ export const ActionButton = (props) => {
           px={2}
         />
         <Box>
-          {props.title && (
+          {title && (
             <Text fontWeight="bold" gridColumn="2/2" as="p">
-              {props.title}
+              {title}
             </Text>
           )}
-          {props.subtitle && (
+          {subtitle && (
             <Text fontWeight="medium" gridColumn="2/2" as="p">
-              {props.subtitle}
+              {subtitle}
             </Text>
           )}
         </Box>

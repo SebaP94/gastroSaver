@@ -12,8 +12,10 @@ const customTheme = extendTheme({
       },
     },
   },
+  fontWeights: {
+    semiBold: 600,
+  },
   fonts: {
-    body: "Roboto, sans-serif",
     heading: "Open Sans, sans",
     mono: "Menlo, monospace",
   },
