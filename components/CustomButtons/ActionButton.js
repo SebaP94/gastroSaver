@@ -9,12 +9,14 @@ export const ActionButton = ({
   subtitle,
   color = "gray.700",
   hoverColor = "red.custom",
+  onClick,
 }) => {
   const [hover, setHover] = useState(false);
 
   return (
     <Link href={link}>
       <Button
+        onClick={onClick}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
         my={2}
@@ -27,7 +29,6 @@ export const ActionButton = ({
         _focus={{
           boxShadow: "none",
           outline: "none",
-          color: "red.custom",
         }}
       >
         <Icon

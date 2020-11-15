@@ -37,7 +37,8 @@ export const Header = (props) => {
             src="/logo.png"
             alt="Gastro saver"
             objectFit="contain"
-            maxHeight={{ base: "100px", md: "150px" }}
+            maxHeight={{ base: "100px", lg: "150px" }}
+            m={{ base: "auto", sm: 1 }}
           />
         </a>
       </Link>
